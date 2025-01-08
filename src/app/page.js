@@ -1,0 +1,70 @@
+import Image from "next/image";
+import Link from "next/link";
+import herobgcode from "./assets/hero-code.png"
+import Navbar from "./components/Navbar";
+import { TypewriterEffect } from "../app/components/ui/typewriter-effect";
+import Card from "./components/Card";
+import u1 from "../app/assets/u1.svg";
+import u3 from "../app/assets/u3.svg";
+import u4 from "../app/assets/u4.svg";
+import u5 from "../app/assets/u5.svg";
+
+export default function Home() {
+
+  const words = [
+    {
+      text: "Collaborate.",
+    },
+    {
+      text: "Code.",
+    },
+    {
+      text: "Repeat.",
+    },
+    {
+      text: "with",
+    },
+    {
+      text: "CodeXEditor",
+      className: "text-button-primary dark:text-button-primary",
+    },
+  ];
+
+  return (
+    <div>
+      <Navbar />
+      <main className="flex flex-col items-center h-screen">
+        <section className="p-none md:p-16 lg:p-24 container justify-center max-w-6xl mx-auto space-y-8 text-center">
+          <div className="mt-[5em] space-y-5">
+            <TypewriterEffect words={words} />
+            <p className="md:text-lg lg:text-xl text-sm font-semibold text-center">
+              Run your code in <span className="text-yellow-400">real-time</span> and share with others.
+            </p>
+            <div className="md:flex-row lg:flex-row flex flex-col items-center justify-center gap-5">
+              {/* <Link href="/joinroom" className="bg-button-primary rounded-lg p-2 flex items-center justify-center w-[10em] h-[3em]">
+                <p className="text-xl">Code live</p>
+              </Link> */}
+              <Link href="/joinroom" className="border-2 border-button-primary rounded-lg flex items-center justify-center w-[10em] h-[3em]">
+                <p className="text-xl">Code Live</p>
+              </Link>
+            </div>
+          </div>
+          <div className="flex items-center justify-center p-8">
+            <Image src={herobgcode} alt="code-ide" className="shadow-xl shadow-secondary-blue top-[25em] border-[0.1em] border-gray-border rounded-xl w-full md:w-auto lg:w-auto h-auto md:h-[25em] lg:h-[35em] md:max-w-[50em] lg:max-w-none" />
+          </div>
+        </section>
+        <section className=" container justify-center max-w-6xl mx-auto mt-10">
+          <div>
+            <h2 className="text-4xl md:text-5xl lg:text-7xl font-[1000] text-center">Let's <span className="text-green-500">create</span> from here</h2>
+          </div>
+          <div className="flex flex-wrap justify-center gap-10">
+            <Card header="Online Compiler" description="Use our tool to let you code." bgImg={u5} url="/" />
+            <Card header="Collaborate with others" description="Use our tool to let you code." bgImg={u1} url="/joinroom" />
+            <Card header="Code in real-time" description="Use our tool to let you code." bgImg={u4} url="/" />
+            <Card header="Create own Rooms" description="Use our tool to let you code." bgImg={u3} url="/joinroom" />
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+}
